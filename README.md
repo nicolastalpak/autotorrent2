@@ -71,6 +71,22 @@ Cron usage, check config every 5 minute.
 docker run -ti --rm -v ${PWD}/autotorrent.db:autotorrent.db -v ${PWD}/config.toml:config.toml ghcr.io/johndoee/autotorrent2:master cron '*/5 * * * * * *' check-config
 ```
 
+Or with compose
+
+```yaml
+services:
+  autotorrent2:
+    image: ghcr.io/johndoee/autotorrent2:master
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./config:/app/autotorrent/.config/autotorrent
+      - ./torrents:/torrents
+      - ./data:/data
+    command: cron '*/30 * * * * * *' scan '&&' at2 add -e /torrents/*.torrent
+```
+
 ## Todo
 
 Assortment of stuff that is planned.
