@@ -68,7 +68,7 @@ docker run -ti --rm -v ${PWD}/autotorrent.db:autotorrent.db -v ${PWD}/config.tom
 Cron usage, check config every 5 minute.
 
 ```bash
-docker run -ti --rm -v ${PWD}/autotorrent.db:autotorrent.db -v ${PWD}/config.toml:config.toml ghcr.io/johndoee/autotorrent2:master cron '*/5 * * * *' check-config
+docker run -ti --rm -v ${PWD}/autotorrent.db:autotorrent.db -v ${PWD}/config.toml:config.toml ghcr.io/johndoee/autotorrent2:master cron '*/5 * * * * * *' check-config
 ```
 
 ## Todo
