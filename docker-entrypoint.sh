@@ -7,7 +7,7 @@ if [[ -n "$PUID" && -n "$PGID" ]]; then
     shift 2
     echo -e '#!/bin/bash\nat2 '"$*" > /var/tmp/cron.sh
     chmod +x /var/tmp/cron.sh
-    echo /usr/local/bin/tinycron "$SCHEDULE" /var/tmp/cron.sh | su autotorrent
+    printf "/usr/local/bin/tinycron %q /var/tmp/cron.sh" "$SCHEDULE" | su autotorrent
   else
     echo at2 "$@" | su autotorrent
   fi
