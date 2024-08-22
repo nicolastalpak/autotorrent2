@@ -3,6 +3,7 @@ import logging
 import os
 import re
 import shlex
+import shutil
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -824,7 +825,7 @@ def add(
                     if move_torrent_on_add:
                         move_torrent_on_add = Path(move_torrent_on_add)
                         move_torrent_on_add.mkdir(exist_ok=True, parents=True)
-                        torrent_path.rename(move_torrent_on_add / torrent_path.name)
+                        shutil.move(torrent_path, move_torrent_on_add / torrent_path.name)
 
         else:
             percentage_info = None
